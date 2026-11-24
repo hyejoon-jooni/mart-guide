@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>마트 NFC 상품 안내</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap">
 <style>
 /* VOICE: friendly in-store helper, calm and legible
@@ -21,11 +22,11 @@
 }
 *{box-sizing:border-box;min-width:0}
 html,body{margin:0;background:#eef0f3}
-body{font:500 15px/1.5 "Noto Sans KR","Noto Sans JP","Noto Sans SC",system-ui,sans-serif;color:var(--title);-webkit-font-smoothing:antialiased;overflow-x:clip}
-:lang(ja) body,html[lang=ja] body{font-family:"Noto Sans JP","Noto Sans KR",system-ui,sans-serif}
-html[lang=vi] body,html[lang=ru] body{font-family:"Noto Sans","Noto Sans KR",system-ui,sans-serif}
+body{font:500 15px/1.5 "Pretendard Variable",Pretendard,"Noto Sans KR","Noto Sans JP","Noto Sans SC",system-ui,sans-serif;color:var(--title);-webkit-font-smoothing:antialiased;overflow-x:clip}
+html[lang=ja] body{font-family:"Noto Sans JP","Pretendard Variable",Pretendard,system-ui,sans-serif}
+html[lang=vi] body,html[lang=ru] body{font-family:"Pretendard Variable",Pretendard,"Noto Sans","Noto Sans KR",system-ui,sans-serif}
 html[lang=vi] .front p,html[lang=ru] .front p{font-family:"Noto Sans",sans-serif}
-html[lang=zh] body{font-family:"Noto Sans SC","Noto Sans KR",system-ui,sans-serif}
+html[lang=zh] body{font-family:"Noto Sans SC","Pretendard Variable",Pretendard,system-ui,sans-serif}
 button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent}
 button:focus-visible{outline:3px solid #3182f6;outline-offset:2px}
 .app{max-width:430px;margin:0 auto;min-height:100vh;min-height:100dvh;background:var(--page);position:relative;transition:background .3s}
