@@ -349,7 +349,7 @@ const fmtKRW=v=>S.lang==='ko'?Math.round(v).toLocaleString('ko-KR')+'원':'₩'+
 const LOC={USD:'en-US',JPY:'ja-JP',CNY:'zh-CN',EUR:'de-DE',VND:'vi-VN',THB:'th-TH',RUB:'ru-RU'};
 const money=(c,v,dec)=>{try{return new Intl.NumberFormat(LOC[c.id]||'en-US',{style:'currency',currency:c.id,minimumFractionDigits:dec,maximumFractionDigits:dec}).format(v)}catch(e){return c.sym+v.toFixed(dec)}};
 const fmtC=(c,krw)=>c.id==='KRW'?fmtKRW(krw):money(c,krw/c.rate,c.dec);
-const rateLine=c=>{const b=c.base||1;return `${money(c,b,0)} = ₩${(c.rate*b).toLocaleString('en-US',{maximumFractionDigits:2})}`};
+const rateLine=c=>{const b=c.base||1;return `${b.toLocaleString(LOC[c.id]||'en-US')} ${c.id} = ${(c.rate*b).toLocaleString('en-US',{maximumFractionDigits:2})} KRW`};
 
 const $=id=>document.getElementById(id);
 function show(id){for(const s of document.querySelectorAll('.screen'))s.classList.toggle('on',s.id===id);window.scrollTo(0,0)}
