@@ -63,6 +63,7 @@ button:focus-visible{outline:3px solid #3182f6;outline-offset:2px}
 .flag{width:24px;height:16px;flex:none;vertical-align:-3px;margin-right:8px;display:inline-block}
 .fl-inline{width:21px;height:14px;margin:0 0 0 2px;vertical-align:-2px}
 .opt .flag,.plabel .flag{margin-right:0}
+.saved{margin:-16px 0 24px;padding:12px 14px;border-radius:10px;background:#e8f3ff;color:#1b64da;font-size:14px;line-height:1.5}
 .caption{padding:4px 4px 0;font-size:12px;line-height:18px;color:#6c6763;font-weight:400}
 .footer{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:100%;max-width:430px;padding:8px 20px calc(16px + env(safe-area-inset-bottom));background:linear-gradient(to top,#fbfafa 75%,rgba(251,250,250,0))}
 .cta{width:100%;padding:16px 32px;border-radius:8px;font-weight:600;font-size:16px;line-height:24px;background:#e5e5e5;color:#a29e9b}
@@ -190,7 +191,6 @@ html[lang=vi] .front h2,html[lang=vi] .front p,html[lang=vi] .pinfo b,html[lang=
 <div class="app" id="app">
   <header class="bar" id="bar"></header>
   <main>
-    <section class="screen" id="s-home"></section>
     <section class="screen" id="s-set"></section>
     <section class="screen" id="s-card"></section>
     <section class="screen" id="s-detail"></section>
@@ -224,16 +224,16 @@ const CUR=[
 ];
 
 const T={
- ko:{setTitle:'나에게 맞는 쇼핑 환경을 설정해요.',setSub:'더 편리한 쇼핑을 위해 몇 가지 정보를 알려주세요.',langL:'어떤 언어로 안내해 드릴까요?',langP:'안내 받을 언어를 선택해주세요.',curL:'어떤 화폐 단위가 익숙하신가요?',curP:'화폐 단위를 선택해주세요.',curC:'선택한 통화로 상품 가격을 함께 확인할 수 있어요.',done:'완료',pInfo:'상품 정보',pDet:'상품 상세',chkPrice:'가격 확인하기',chkProd:'상품 확인하기',viewDet:'상세 정보 보기',priceInfo:'가격 정보',priceNote:'* 선택한 통화로 상품 가격을 확인할 수 있어요.',buy:'구매 가격',mine:'내 통화 가격',recT:'이 재료, 이렇게도 먹을 수 있어요!',detT:'상품 상세 정보',nutT:'영양정보',nutN:'1일 영양성분 기준치 비율(%)은 2,000 kcal 기준이며, 개인의 필요 열량에 따라 다를 수 있어요.',serv:(a,k,t)=>`${a}당 ${k} kcal`+(t?` · 총내용량 ${t}`:''),per:(p,u,q)=>`${p} · 100 ${u}당 ${q}`,homeT:'진열대의 NFC 태그를 눌러보세요',homeS:'실제 매장에서는 휴대폰을 태그에 대면 바로 상품 페이지가 열려요.',tap:'NFC 태그',demo:'체험용 화면이에요. 환율은 예시 값이며, 실제 서비스에서는 실시간 환율로 바뀌어요.',
+ ko:{saved:'설정이 저장됐어요. 진열대의 NFC 태그에 휴대폰을 대 보세요.',setTitle:'나에게 맞는 쇼핑 환경을 설정해요.',setSub:'더 편리한 쇼핑을 위해 몇 가지 정보를 알려주세요.',langL:'어떤 언어로 안내해 드릴까요?',langP:'안내 받을 언어를 선택해주세요.',curL:'어떤 화폐 단위가 익숙하신가요?',curP:'화폐 단위를 선택해주세요.',curC:'선택한 통화로 상품 가격을 함께 확인할 수 있어요.',done:'완료',pInfo:'상품 정보',pDet:'상품 상세',chkPrice:'가격 확인하기',chkProd:'상품 확인하기',viewDet:'상세 정보 보기',priceInfo:'가격 정보',priceNote:'* 선택한 통화로 상품 가격을 확인할 수 있어요.',buy:'구매 가격',mine:'내 통화 가격',recT:'이 재료, 이렇게도 먹을 수 있어요!',detT:'상품 상세 정보',nutT:'영양정보',nutN:'1일 영양성분 기준치 비율(%)은 2,000 kcal 기준이며, 개인의 필요 열량에 따라 다를 수 있어요.',serv:(a,k,t)=>`${a}당 ${k} kcal`+(t?` · 총내용량 ${t}`:''),per:(p,u,q)=>`${p} · 100 ${u}당 ${q}`,homeT:'진열대의 NFC 태그를 눌러보세요',homeS:'실제 매장에서는 휴대폰을 태그에 대면 바로 상품 페이지가 열려요.',tap:'NFC 태그',demo:'체험용 화면이에요. 환율은 예시 값이며, 실제 서비스에서는 실시간 환율로 바뀌어요.',
   f:{name:'제품명',type:'식품유형',vol:'내용량',price:'판매가',use:'활용 요리',ing:'주요 원재료',alg:'알레르기',sto:'보관 방법',ori:'원산지'},
   n:{na:'나트륨',carb:'탄수화물',sug:'당류',fat:'지방',trans:'트랜스지방',sat:'포화지방',chol:'콜레스테롤',pro:'단백질'}},
- en:{setTitle:'Set up your shopping preferences.',setSub:'Tell us a couple of things to make shopping easier.',langL:'Which language should we use?',langP:'Select a language',curL:'Which currency are you used to?',curP:'Select a currency',curC:'Prices will also be shown in this currency.',done:'Done',pInfo:'Product info',pDet:'Product details',chkPrice:'Check price',chkProd:'View product',viewDet:'View details',priceInfo:'Price info',priceNote:'* Prices are shown in your selected currency.',buy:'Store price',mine:'Your currency',recT:'Try it these ways too!',detT:'Product information',nutT:'Nutrition facts',nutN:'% Daily Values are based on a 2,000 kcal diet and may vary with your energy needs.',serv:(a,k,t)=>`${k} kcal per ${a}`+(t?` · Total ${t}`:''),per:(p,u,q)=>`${p} · ${q} per 100 ${u}`,homeT:'Tap an NFC tag on the shelf',homeS:'In store, holding your phone to the tag opens the product page directly.',tap:'NFC tag',demo:'Demo screen. Exchange rates are sample values; the live service uses real-time rates.',
+ en:{saved:'Saved. Hold your phone to an NFC tag on the shelf.',setTitle:'Set up your shopping preferences.',setSub:'Tell us a couple of things to make shopping easier.',langL:'Which language should we use?',langP:'Select a language',curL:'Which currency are you used to?',curP:'Select a currency',curC:'Prices will also be shown in this currency.',done:'Done',pInfo:'Product info',pDet:'Product details',chkPrice:'Check price',chkProd:'View product',viewDet:'View details',priceInfo:'Price info',priceNote:'* Prices are shown in your selected currency.',buy:'Store price',mine:'Your currency',recT:'Try it these ways too!',detT:'Product information',nutT:'Nutrition facts',nutN:'% Daily Values are based on a 2,000 kcal diet and may vary with your energy needs.',serv:(a,k,t)=>`${k} kcal per ${a}`+(t?` · Total ${t}`:''),per:(p,u,q)=>`${p} · ${q} per 100 ${u}`,homeT:'Tap an NFC tag on the shelf',homeS:'In store, holding your phone to the tag opens the product page directly.',tap:'NFC tag',demo:'Demo screen. Exchange rates are sample values; the live service uses real-time rates.',
   f:{name:'Product',type:'Food type',vol:'Net content',price:'Price',use:'Uses',ing:'Ingredients',alg:'Allergens',sto:'Storage',ori:'Origin'},
   n:{na:'Sodium',carb:'Carbs',sug:'Sugars',fat:'Fat',trans:'Trans fat',sat:'Sat. fat',chol:'Cholesterol',pro:'Protein'}},
- ja:{setTitle:'あなたに合ったショッピング環境を設定しましょう。',setSub:'より便利なお買い物のために、いくつか教えてください。',langL:'どの言語でご案内しましょうか？',langP:'言語を選択してください',curL:'使い慣れた通貨はどれですか？',curP:'通貨を選択してください',curC:'選択した通貨で商品価格もあわせて確認できます。',done:'完了',pInfo:'商品情報',pDet:'商品詳細',chkPrice:'価格を確認',chkProd:'商品を確認',viewDet:'詳細を見る',priceInfo:'価格情報',priceNote:'* 選択した通貨で価格を確認できます。',buy:'購入価格',mine:'あなたの通貨',recT:'この食材、こんな食べ方も！',detT:'商品詳細情報',nutT:'栄養成分',nutN:'1日の栄養素等表示基準値に対する割合（%）は2,000 kcal基準で、個人の必要エネルギーにより異なります。',serv:(a,k,t)=>`${a}あたり ${k} kcal`+(t?` · 内容量 ${t}`:''),per:(p,u,q)=>`${p} · 100 ${u}あたり ${q}`,homeT:'棚のNFCタグをタッチしてください',homeS:'店舗ではスマホをタグにかざすと、商品ページが直接開きます。',tap:'NFCタグ',demo:'体験用の画面です。為替レートは参考値で、実際のサービスではリアルタイムレートを使用します。',
+ ja:{saved:'設定を保存しました。棚のNFCタグにスマホをかざしてください。',setTitle:'あなたに合ったショッピング環境を設定しましょう。',setSub:'より便利なお買い物のために、いくつか教えてください。',langL:'どの言語でご案内しましょうか？',langP:'言語を選択してください',curL:'使い慣れた通貨はどれですか？',curP:'通貨を選択してください',curC:'選択した通貨で商品価格もあわせて確認できます。',done:'完了',pInfo:'商品情報',pDet:'商品詳細',chkPrice:'価格を確認',chkProd:'商品を確認',viewDet:'詳細を見る',priceInfo:'価格情報',priceNote:'* 選択した通貨で価格を確認できます。',buy:'購入価格',mine:'あなたの通貨',recT:'この食材、こんな食べ方も！',detT:'商品詳細情報',nutT:'栄養成分',nutN:'1日の栄養素等表示基準値に対する割合（%）は2,000 kcal基準で、個人の必要エネルギーにより異なります。',serv:(a,k,t)=>`${a}あたり ${k} kcal`+(t?` · 内容量 ${t}`:''),per:(p,u,q)=>`${p} · 100 ${u}あたり ${q}`,homeT:'棚のNFCタグをタッチしてください',homeS:'店舗ではスマホをタグにかざすと、商品ページが直接開きます。',tap:'NFCタグ',demo:'体験用の画面です。為替レートは参考値で、実際のサービスではリアルタイムレートを使用します。',
   f:{name:'製品名',type:'食品の種類',vol:'内容量',price:'販売価格',use:'おすすめ料理',ing:'主な原材料',alg:'アレルギー',sto:'保存方法',ori:'原産国'},
   n:{na:'ナトリウム',carb:'炭水化物',sug:'糖類',fat:'脂質',trans:'トランス脂肪酸',sat:'飽和脂肪酸',chol:'コレステロール',pro:'たんぱく質'}},
- zh:{setTitle:'设置适合您的购物环境。',setSub:'为了更便捷地购物，请告诉我们一些信息。',langL:'您希望使用哪种语言？',langP:'请选择语言',curL:'您熟悉哪种货币？',curP:'请选择货币',curC:'可同时以所选货币查看商品价格。',done:'完成',pInfo:'商品信息',pDet:'商品详情',chkPrice:'查看价格',chkProd:'查看商品',viewDet:'查看详情',priceInfo:'价格信息',priceNote:'* 可用所选货币查看商品价格。',buy:'购买价格',mine:'您的货币',recT:'这个食材还能这样吃！',detT:'商品详细信息',nutT:'营养成分',nutN:'营养素参考值百分比（%）以每日2,000 kcal为基准，可能因个人所需热量而异。',serv:(a,k,t)=>`每${a} ${k} kcal`+(t?` · 净含量 ${t}`:''),per:(p,u,q)=>`${p} · 每100 ${u} ${q}`,homeT:'请轻触货架上的NFC标签',homeS:'在门店中，将手机靠近标签即可直接打开商品页面。',tap:'NFC标签',demo:'体验用界面。汇率为示例数值，实际服务将使用实时汇率。',
+ zh:{saved:'设置已保存。请将手机靠近货架上的NFC标签。',setTitle:'设置适合您的购物环境。',setSub:'为了更便捷地购物，请告诉我们一些信息。',langL:'您希望使用哪种语言？',langP:'请选择语言',curL:'您熟悉哪种货币？',curP:'请选择货币',curC:'可同时以所选货币查看商品价格。',done:'完成',pInfo:'商品信息',pDet:'商品详情',chkPrice:'查看价格',chkProd:'查看商品',viewDet:'查看详情',priceInfo:'价格信息',priceNote:'* 可用所选货币查看商品价格。',buy:'购买价格',mine:'您的货币',recT:'这个食材还能这样吃！',detT:'商品详细信息',nutT:'营养成分',nutN:'营养素参考值百分比（%）以每日2,000 kcal为基准，可能因个人所需热量而异。',serv:(a,k,t)=>`每${a} ${k} kcal`+(t?` · 净含量 ${t}`:''),per:(p,u,q)=>`${p} · 每100 ${u} ${q}`,homeT:'请轻触货架上的NFC标签',homeS:'在门店中，将手机靠近标签即可直接打开商品页面。',tap:'NFC标签',demo:'体验用界面。汇率为示例数值，实际服务将使用实时汇率。',
   f:{name:'产品名称',type:'食品类型',vol:'净含量',price:'售价',use:'推荐用途',ing:'主要原料',alg:'过敏原',sto:'储存方法',ori:'原产地'},
   n:{na:'钠',carb:'碳水化合物',sug:'糖',fat:'脂肪',trans:'反式脂肪',sat:'饱和脂肪',chol:'胆固醇',pro:'蛋白质'}}
 };
@@ -310,10 +310,10 @@ LANGS.push({id:'vi',name:'Tiếng Việt',en:'Vietnamese',fl:'🇻🇳'},{id:'ru
 CUR.push({id:'RUB',fl:'🇷🇺',sym:'₽',rate:17,dec:2,name:{ko:'러시아 루블',en:'Russian ruble',ja:'ロシア・ルーブル',zh:'俄罗斯卢布'}});
 {const cn={KRW:['Won Hàn Quốc','Южнокорейская вона'],USD:['Đô la Mỹ','Доллар США'],JPY:['Yên Nhật','Японская иена'],CNY:['Nhân dân tệ','Китайский юань'],EUR:['Euro','Евро'],VND:['Đồng Việt Nam','Вьетнамский донг'],THB:['Baht Thái','Тайский бат'],RUB:['Rúp Nga','Российский рубль']};
 for(const c of CUR){c.name.vi=cn[c.id][0];c.name.ru=cn[c.id][1]}}
-T.vi={setTitle:'Thiết lập trải nghiệm mua sắm của bạn.',setSub:'Hãy cho chúng tôi biết một vài thông tin để mua sắm thuận tiện hơn.',langL:'Bạn muốn được hướng dẫn bằng ngôn ngữ nào?',langP:'Chọn ngôn ngữ',curL:'Bạn quen dùng loại tiền tệ nào?',curP:'Chọn tiền tệ',curC:'Giá sản phẩm cũng sẽ được hiển thị theo tiền tệ này.',done:'Hoàn tất',pInfo:'Thông tin sản phẩm',pDet:'Chi tiết sản phẩm',chkPrice:'Xem giá',chkProd:'Xem sản phẩm',viewDet:'Xem chi tiết',priceInfo:'Thông tin giá',priceNote:'* Giá được hiển thị theo tiền tệ bạn đã chọn.',buy:'Giá mua',mine:'Tiền tệ của bạn',recT:'Nguyên liệu này còn có thể ăn theo cách này!',detT:'Thông tin sản phẩm',nutT:'Thông tin dinh dưỡng',nutN:'Tỷ lệ % giá trị dinh dưỡng hằng ngày dựa trên chế độ 2.000 kcal và có thể khác tùy nhu cầu năng lượng của bạn.',serv:(a,k,t)=>`${k} kcal mỗi ${a}`+(t?` · Tổng ${t}`:''),per:(p,u,q)=>`${p} · ${q} mỗi 100 ${u}`,homeT:'Chạm vào thẻ NFC trên kệ hàng',homeS:'Tại cửa hàng, chỉ cần đưa điện thoại lại gần thẻ là trang sản phẩm sẽ mở ra ngay.',tap:'Thẻ NFC',demo:'Màn hình trải nghiệm. Tỷ giá là giá trị mẫu; dịch vụ thực tế sẽ dùng tỷ giá theo thời gian thực.',
+T.vi={saved:'Đã lưu. Hãy đưa điện thoại lại gần thẻ NFC trên kệ hàng.',setTitle:'Thiết lập trải nghiệm mua sắm của bạn.',setSub:'Hãy cho chúng tôi biết một vài thông tin để mua sắm thuận tiện hơn.',langL:'Bạn muốn được hướng dẫn bằng ngôn ngữ nào?',langP:'Chọn ngôn ngữ',curL:'Bạn quen dùng loại tiền tệ nào?',curP:'Chọn tiền tệ',curC:'Giá sản phẩm cũng sẽ được hiển thị theo tiền tệ này.',done:'Hoàn tất',pInfo:'Thông tin sản phẩm',pDet:'Chi tiết sản phẩm',chkPrice:'Xem giá',chkProd:'Xem sản phẩm',viewDet:'Xem chi tiết',priceInfo:'Thông tin giá',priceNote:'* Giá được hiển thị theo tiền tệ bạn đã chọn.',buy:'Giá mua',mine:'Tiền tệ của bạn',recT:'Nguyên liệu này còn có thể ăn theo cách này!',detT:'Thông tin sản phẩm',nutT:'Thông tin dinh dưỡng',nutN:'Tỷ lệ % giá trị dinh dưỡng hằng ngày dựa trên chế độ 2.000 kcal và có thể khác tùy nhu cầu năng lượng của bạn.',serv:(a,k,t)=>`${k} kcal mỗi ${a}`+(t?` · Tổng ${t}`:''),per:(p,u,q)=>`${p} · ${q} mỗi 100 ${u}`,homeT:'Chạm vào thẻ NFC trên kệ hàng',homeS:'Tại cửa hàng, chỉ cần đưa điện thoại lại gần thẻ là trang sản phẩm sẽ mở ra ngay.',tap:'Thẻ NFC',demo:'Màn hình trải nghiệm. Tỷ giá là giá trị mẫu; dịch vụ thực tế sẽ dùng tỷ giá theo thời gian thực.',
  f:{name:'Tên sản phẩm',type:'Loại thực phẩm',vol:'Khối lượng tịnh',price:'Giá bán',use:'Cách dùng',ing:'Thành phần chính',alg:'Chất gây dị ứng',sto:'Bảo quản',ori:'Xuất xứ'},
  n:{na:'Natri',carb:'Carbohydrate',sug:'Đường',fat:'Chất béo',trans:'Chất béo trans',sat:'Chất béo bão hòa',chol:'Cholesterol',pro:'Chất đạm'}};
-T.ru={setTitle:'Настройте покупки под себя.',setSub:'Расскажите немного о себе, чтобы покупки были удобнее.',langL:'На каком языке вам удобнее?',langP:'Выберите язык',curL:'Какая валюта вам привычна?',curP:'Выберите валюту',curC:'Цены также будут показаны в этой валюте.',done:'Готово',pInfo:'О товаре',pDet:'Подробности',chkPrice:'Узнать цену',chkProd:'К товару',viewDet:'Подробнее',priceInfo:'Цена',priceNote:'* Цены показаны в выбранной вами валюте.',buy:'Цена в магазине',mine:'В вашей валюте',recT:'Попробуйте и так!',detT:'Информация о товаре',nutT:'Пищевая ценность',nutN:'Процент от суточной нормы рассчитан на рацион 2 000 ккал и может отличаться в зависимости от ваших потребностей.',serv:(a,k,t)=>`${k} ккал на ${a}`+(t?` · Всего ${t}`:''),per:(p,u,q)=>`${p} · ${q} за 100 ${u}`,homeT:'Коснитесь NFC-метки на полке',homeS:'В магазине достаточно поднести телефон к метке — страница товара откроется сразу.',tap:'NFC-метка',demo:'Демонстрационный экран. Курсы валют приведены для примера; в рабочем сервисе используются актуальные курсы.',
+T.ru={saved:'Сохранено. Поднесите телефон к NFC-метке на полке.',setTitle:'Настройте покупки под себя.',setSub:'Расскажите немного о себе, чтобы покупки были удобнее.',langL:'На каком языке вам удобнее?',langP:'Выберите язык',curL:'Какая валюта вам привычна?',curP:'Выберите валюту',curC:'Цены также будут показаны в этой валюте.',done:'Готово',pInfo:'О товаре',pDet:'Подробности',chkPrice:'Узнать цену',chkProd:'К товару',viewDet:'Подробнее',priceInfo:'Цена',priceNote:'* Цены показаны в выбранной вами валюте.',buy:'Цена в магазине',mine:'В вашей валюте',recT:'Попробуйте и так!',detT:'Информация о товаре',nutT:'Пищевая ценность',nutN:'Процент от суточной нормы рассчитан на рацион 2 000 ккал и может отличаться в зависимости от ваших потребностей.',serv:(a,k,t)=>`${k} ккал на ${a}`+(t?` · Всего ${t}`:''),per:(p,u,q)=>`${p} · ${q} за 100 ${u}`,homeT:'Коснитесь NFC-метки на полке',homeS:'В магазине достаточно поднести телефон к метке — страница товара откроется сразу.',tap:'NFC-метка',demo:'Демонстрационный экран. Курсы валют приведены для примера; в рабочем сервисе используются актуальные курсы.',
  f:{name:'Название',type:'Тип продукта',vol:'Объём / вес',price:'Цена',use:'Применение',ing:'Состав',alg:'Аллергены',sto:'Хранение',ori:'Страна'},
  n:{na:'Натрий',carb:'Углеводы',sug:'Сахара',fat:'Жиры',trans:'Трансжиры',sat:'Насыщ. жиры',chol:'Холестерин',pro:'Белки'}};
 {const X={
@@ -378,20 +378,12 @@ function bar(kind,title){
     if($('bGlobe'))$('bGlobe').onclick=()=>openSettings(S.pending);
   }
   $('bBack').onclick=()=>{
-    if(kind==='set'){S.draftLang='';if(S.cur)return route();location.hash='';return}
+    if(kind==='set'){S.draftLang='';return route()}
     const [id,sub]=location.hash.slice(1).split('-');
-    location.hash=sub==='detail'?id:'';
+    if(sub==='detail')location.hash=id;
   };
-  $('bBack').style.visibility=kind==='home'?'hidden':'visible';
-}
-
-function renderHome(){
-  theme(null);bar('home','');
-  $('s-home').innerHTML=`<div class="home"><h2>${esc(t().homeT)}</h2><p class="sub">${esc(t().homeS)}</p>
-  <div class="tags">${ORDER.map(id=>{const p=P[id];return `<button class="tag bg-${id}" data-id="${id}" style="--grad:${p.grad};--ct:${p.ct}"><span class="nfc">${I.nfc}${esc(t().tap)}</span><img src="${IMG[id]}" alt=""><b>${esc(p.name[S.lang])}</b></button>`}).join('')}</div>
-  <p class="demo">${esc(t().demo)}</p></div>`;
-  for(const b of $('s-home').querySelectorAll('.tag'))b.onclick=()=>location.hash=b.dataset.id;
-  show('s-home');
+  /* back only where there is somewhere to go: detail -> card, settings opened from a product -> that product */
+  $('bBack').style.visibility=(kind==='detail'||(kind==='set'&&S.cur&&S.pending))?'visible':'hidden';
 }
 
 function openSettings(next){S.pending=next||S.pending;S.draftLang=S.lang;S.draftCur=S.cur;renderSet()}
@@ -399,12 +391,12 @@ function renderSet(){
   const L=T[S.draftLang],lo=LANGS.find(l=>l.id===S.draftLang),c=cur(S.draftCur);
   document.documentElement.lang=S.draftLang;
   theme(null);$('app').style.setProperty('--page','#fff');bar('set');
-  $('s-set').innerHTML=`<div class="set"><h2>${esc(L.setTitle)}</h2><p class="sub">${esc(L.setSub)}</p>
+  $('s-set').innerHTML=`<div class="set"><h2>${esc(L.setTitle)}</h2><p class="sub">${esc(L.setSub)}</p>${S.saved&&!S.pending?`<p class="saved" role="status">${esc(L.saved)}</p>`:''}
    <div class="field"><label>${esc(L.langL)}</label><button class="select filled" id="fLang"><span>${flag(lo.fl)}${esc(lo.name)}</span>${I.down}</button></div>
    <div class="field"><label>${esc(L.curL)}</label><button class="select ${c?'filled':''}" id="fCur"><span>${c?flag(c.fl)+esc(`${c.id} · ${c.name[S.draftLang]}`):esc(L.curP)}</span>${I.down}</button><div class="caption">${esc(L.curC)}</div></div></div>
    <div class="footer"><button class="cta ${c?'ready':''}" id="fDone" ${c?'':'disabled'}>${esc(L.done)}</button></div>`;
   $('fLang').onclick=()=>sheet('lang');$('fCur').onclick=()=>sheet('cur');
-  $('fDone').onclick=()=>{if(!S.draftCur)return;S.lang=S.draftLang;S.cur=S.draftCur;S.draftLang='';store.set('nfc.lang',S.lang);store.set('nfc.cur',S.cur);route()};
+  $('fDone').onclick=()=>{if(!S.draftCur)return;S.lang=S.draftLang;S.cur=S.draftCur;S.draftLang='';store.set('nfc.lang',S.lang);store.set('nfc.cur',S.cur);S.saved=!S.pending;route()};
   show('s-set');
 }
 
@@ -468,7 +460,7 @@ function renderDetail(id){
 function route(){
   $('dim').classList.remove('on');
   const h=location.hash.slice(1),[id,sub]=h.split('-');
-  if(!P[id]){S.pending=null;return renderHome()}
+  if(!P[id]){S.pending=null;return S.draftLang?renderSet():openSettings(null)}
   S.pending=h;
   if(!S.cur||S.draftLang)return S.draftLang?renderSet():openSettings(h);
   if(sub==='detail')return renderDetail(id);
